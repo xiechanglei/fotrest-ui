@@ -25,10 +25,15 @@ document.head.appendChild(globalStyle);
 //可自定义的样式文件
 const custormStyle = document.createElement('custom-style');
 
-type ConfigOptions = { primary: string }
-
+type ConfigOptions = { primary?: string, text?: string, matrixText?: string }
+const defaultOptions: ConfigOptions = {
+  primary: '#009933',
+  text: '#625b47',
+  matrixText: '#fff'
+}
 export const configTheme = (options: ConfigOptions) => {
-    custormStyle.innerHTML = `
+  options = { ...defaultOptions, ...options }
+  custormStyle.innerHTML = `
     <style is="custom-style">
         html {
             --color-primary: ${options.primary};
@@ -39,6 +44,8 @@ export const configTheme = (options: ConfigOptions) => {
     `
 }
 
-configTheme({primary: '#009933'});
+
+
+configTheme(defaultOptions);
 
 document.head.appendChild(custormStyle);

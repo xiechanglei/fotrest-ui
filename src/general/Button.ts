@@ -14,6 +14,14 @@ class Button extends PolymerElement {
             line-height: 2.5rem;
             padding: 0 1.5rem;
             cursor: pointer;
+            user-select: none;
+            transition: filter 0.2s;
+        }
+        .button-wraper:hover {
+            filter: brightness(1.1);
+        }
+        .button-wraper:active {
+            filter: brightness(0.9);
         }
         </style>
         <div class="button-wraper"><slot/></div>
