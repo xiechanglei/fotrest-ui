@@ -24,9 +24,20 @@ class Button extends PolymerElement {
             filter: brightness(0.9);
         }
         </style>
-        <div class="button-wraper"><slot/></div>
+        <div class="button-wraper">[[value]]</div>
       `;
     }
+
+    static get properties() {
+
+        return {
+            value: {
+                type: String,
+                value: 'Button'
+            }
+        }
+    }
+
 }
 
 customElements.define(getGlobalPrefix() + 'button', Button)

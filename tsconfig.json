@@ -20,5 +20,6 @@
         "declaration": true,//声明文件/
         "outDir": "types",
         "baseUrl": "./",
+        "noEmit": true
     }
 }

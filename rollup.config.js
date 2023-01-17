@@ -3,6 +3,7 @@ import resolve from '@rollup/plugin-node-resolve';
 // import commonjs from '@rollup/plugin-commonjs';
 import { terser } from 'rollup-plugin-terser'
 // import nodePolyfills from 'rollup-plugin-polyfill-node'
+import cleanup from 'rollup-plugin-cleanup'
  
 export default {
     input: "./src/index.ts",
@@ -11,7 +12,8 @@ export default {
         resolve({ browser: true }),//加载第三方模块
         // commonjs(),//common转esm
         ts({ tsconfig: "tsconfig.json" }),//typescript support
-        terser() //minify the code and remove comments
+        terser(), //minify the code and remove comments
+        cleanup()
     ],
     output: [
         {
@@ -19,12 +21,13 @@ export default {
             file: "dist/index.js", //output
             name: "quickSite", //name of umd
             exports: "named",//remove export default warning
+            compact: false,//remove comments
             sourcemap: true
         },
-        {
-            format: "esm",//esm format
-            file: "dist/index.esm.js",//output file
-            sourcemap: true
-        }
+        // {
+        //     format: "esm",//esm format
+        //     file: "dist/index.esm.js",//output file
+        //     sourcemap: true
+        // }
     ],
 }
